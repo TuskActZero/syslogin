@@ -1,0 +1,18 @@
+.body{
+    background-color:rgb(62, 190,234);
+}
+
+.container-md{
+    background-color: white;
+
+}
+
+.rounded{
+    width: 400px;
+    padding: 2px;
+    margin: 2px;
+}
+
+.btn{
+    margin: 3px;
+}
