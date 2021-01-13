@@ -79,23 +79,33 @@ WSGI_APPLICATION = 'login.wsgi.application'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
 
-DATABASES = {
-    'default': {
-        'ENGINE': 'django.db.backends.postgresql_psycopg2',
-        'NAME': 'login',
-        'USER': 'postgres',
-        'PASSWORD': '47469644Ca.',
-    }
-}
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': BASE_DIR / 'db.sqlite3',
+#    }
+#}
 
-#import dj_database_url
-#from decouple import config
+import dj_database_url
+from decouple import config
 
 #DATABASE = {
 #   'default': dj_database_url.config(
 #        default=config('DATABASE_URL')
 #   )
 #}
+
+#DATABASES = {
+#    'default': {
+#        'ENGINE': 'django.db.backends.sqlite3',
+#        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+#    }
+#}
+
+
+db_config = dj_database_url.config()
+if db_config:
+    DATABASES['default'] =  db_config
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
