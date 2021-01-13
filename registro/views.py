@@ -12,8 +12,8 @@ from django.contrib.auth.mixins import LoginRequiredMixin
 
 class Home(LoginRequiredMixin ,TemplateView):
     login_url = 'accounts/login/'
-    redirect_field_name = 'home.html'
-    template_name = 'home.html'
+    redirect_field_name = 'index.html'
+    template_name = 'index.html'
 
 class Registro(CreateView):
     model = User
@@ -23,7 +23,7 @@ class Registro(CreateView):
     def form_valid(self, form):
         user = form.save()
         login(self.request, user)
-        return redirect('casa')
+        return redirect('index')
 
 
 class LoginPage(LoginView):
@@ -34,7 +34,7 @@ class LoginPage(LoginView):
     def form_valid(self, form):
         user = form.save()
         login(self.request, user)
-        return redirect('casa')
+        return redirect('index')
 
 def logout(request):
     do_logout(request)
