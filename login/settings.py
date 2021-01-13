@@ -87,7 +87,7 @@ WSGI_APPLICATION = 'login.wsgi.application'
 #}
 
 import dj_database_url
-from decouple import Config
+from decouple import config
 
 DATABASE = {
     'default': dj_database_url.config(
