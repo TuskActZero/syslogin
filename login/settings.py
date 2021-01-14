@@ -82,13 +82,24 @@ WSGI_APPLICATION = 'login.wsgi.application'
 
 
 import dj_database_url
-from decouple import config
+
+DEBUG = False
+
+ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
 
 DATABASES = {
-    'default': dj_database_url.config(
-        default=config('DATABASE_URL')
-    )
+    'default': {
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'login',
+        'USER': 'postgre',
+        'PASSWORD': '47469644Ca.',
+        'HOST': 'localhost',
+        'PORT': '',
+    }
 }
+
+db_from_env = dj_database_url.config(conn_max_age=500)
+DATABASES['default'].update(db_from_env)
 
 #DATABASES = {
 #    'default': {
