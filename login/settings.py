@@ -85,13 +85,13 @@ import dj_database_url
 from decouple import config
 
 
-DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
 
-#DATABASE = {
-#   'default': dj_database_url.config(
-#        default=config('DATABASE_URL')
-#   )
-#}
+
+DATABASE = {
+   'default': dj_database_url.config(
+        default=config('DATABASE_URL')
+   )
+}
 
 #DATABASES = {
 #    'default': {
