@@ -25,7 +25,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 SECRET_KEY = '$s=j8ojnz&)42cjfv2q3rv^r^)khy(pq-ovd9y!4tu#5bwlm*t'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
@@ -83,9 +83,7 @@ WSGI_APPLICATION = 'login.wsgi.application'
 
 import dj_database_url
 
-DEBUG = False
-
-ALLOWED_HOSTS = ['127.0.0.1', '.herokuapp.com']
+DEBUG = True
 
 DATABASES = {
     'default': {
