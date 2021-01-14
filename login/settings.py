@@ -12,6 +12,7 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 
 from pathlib import Path 
 import os
+import django_heroku
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
@@ -83,11 +84,14 @@ WSGI_APPLICATION = 'login.wsgi.application'
 import dj_database_url
 from decouple import config
 
-DATABASE = {
-   'default': dj_database_url.config(
-        default=config('DATABASE_URL')
-   )
-}
+
+DATABASES['default'] = dj_database_url.config(conn_max_age=600, ssl_require=True)
+
+#DATABASE = {
+#   'default': dj_database_url.config(
+#        default=config('DATABASE_URL')
+#   )
+#}
 
 #DATABASES = {
 #    'default': {
@@ -142,12 +146,12 @@ STATICFILES_DIRS = (
 )
 
 
-
-
 AUTH_USER_MODEL = 'registro.User'
 
 LOGIN_URL = '/'
 LOGIN_REDIRECT_URL = '/'
 LOGOUT_REDIRECT_URL = '/accounts/login/'
 
-STATICFILES_STORAGE ='whitenoise.storage.CompressedManifestStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+
+django_heroku.settings(locals())
